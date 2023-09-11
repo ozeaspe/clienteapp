@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import './signin.css'
 
-import fisioterapia from '../../assets/fisioterapia.jpg'
+import fisioterapia from '../../assets/fisioterapia.png'
 
 function SignIn(){
 
@@ -21,7 +21,7 @@ function SignIn(){
                 </div>
 
                 <form>
-                    <h1>Entrar</h1>
+                    <h1>Login</h1>
                     <input
                     type='text'
                     placeholder='email@email.com'
@@ -38,6 +38,9 @@ function SignIn(){
                     onChange={ (e) => setPassword(e.target.value)}
                     />
                     
+                    <button type='submit'>
+                        Acessar
+                    </button>
                     
                 </form>
 
