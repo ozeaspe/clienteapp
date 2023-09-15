@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { AuthContext } from '../../contexts/auth';
 import { Link } from 'react-router-dom';
 
 import './signin.css'
@@ -11,7 +12,18 @@ function SignIn(){
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-   
+   const {signIn} = useContext(AuthContext)
+
+   async function handleSignIn(e){
+    e.preventDefault();
+
+    //Se o email é diferente de vazio, se a senha é diferente de vazio, chama o método de signIn 
+    if(email !== '' && password !== ''){
+        await signIn(email, password);
+    }else{
+        alert("Usuário não cadastrado!")
+    }
+}
 
     return(
         <div className='container-center'>
@@ -20,7 +32,7 @@ function SignIn(){
                     <img src={fisioterapia} alt='Logo do clienteapp' />
                 </div>
 
-                <form>
+                <form onSubmit={handleSignIn}>
                     <h1>Login</h1>
                     <input
                     type='text'
