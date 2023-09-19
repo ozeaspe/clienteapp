@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/auth";
 
 import fisioterapia from '../../assets/fisioterapia.png'
 
@@ -10,6 +11,9 @@ function SignUp(){
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    //Utilizando a função que foi criada no contexto
+    const { signUp, loadingAuth } = useContext(AuthContext);
+
    //Função submeter os dados do formalário
    async function handleSubmit(e){
     //Evita que a página que atualizando automaticamente
@@ -18,7 +22,7 @@ function SignUp(){
     // Se nome é diferente de vazio, se email diferente de vazio, se password diferente de vazio 
     //fazer cadastro
     if(nome !== '' && email !== '' && password !== ''){
-        alert("testando")
+        await signUp(email, password, nome)
     }
 
    }
@@ -58,7 +62,7 @@ function SignUp(){
                     onChange={ (e) => setPassword(e.target.value)}
                     />
                     
-                    <button type='submit'>Cadastrar</button>
+                        <button type='submit'>{loadingAuth ? 'Carregando...' : 'Cadastrar'}</button>
                     
                 </form>
                 

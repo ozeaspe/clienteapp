@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import './signin.css'
 
 import fisioterapia from '../../assets/fisioterapia.png'
+import { toast } from 'react-toastify';
 
 function SignIn(){
 
@@ -21,7 +22,7 @@ function SignIn(){
     if(email !== '' && password !== ''){
         await signIn(email, password);
     }else{
-        alert("Usuário não cadastrado!")
+        toast.error("Usuário não cadastrado!")
     }
 }
 
