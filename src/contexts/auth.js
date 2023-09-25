@@ -1,8 +1,9 @@
 import { useState, createContext,} from "react";
 //fazendo a conexão com o firebase
 import{ auth, db } from '../services/firebaseConnection'
-//Importando do firebase para criar um usuário
-import { createUserWithEmailAndPassword } from "firebase/auth";
+/*Importando do firebase para criar um usuário, importando signInWithEmailAndPassword
+para criar o login do usuário*/
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 /*Importando do banco doc==>para acessar os documentos
                       getDoc==> para pegar os documentos
                       setDoc==> para passa os dados para o documento
@@ -28,17 +29,43 @@ function AuthProvider({children}){
     //Criando a navegação entre paáginas
     const navigate = useNavigate();
 
-    function signIn(email, password){
-        console.log(email)
-        console.log(password);
-        toast.success("Bem-vindo(a)!")
+    //Criando o login do usuário
+    async function signIn(email, password){
+        setLoadingAuth(true);
+
+        await signInWithEmailAndPassword(auth, email, password)
+        .then( async (value) => {
+            let uid = value.user.uid;
+
+            const docRef = doc(db, "users", uid);
+            const docSnap = await getDoc(docRef);
+
+            let data = {
+                uid: uid,
+                nome: docSnap.data().nome,
+                email: value.user.email,
+                avatarUrl: docSnap.data().avatarUrl,
+            };
+
+            setUser(data);
+            storageUser(data);
+            setLoadingAuth(false);
+            toast.success("Bem-vindo(a)!");
+            navigate("/dashboard");
+        })
+        .catch((error) => {
+            console.log(error);
+            setLoadingAuth(false);
+            toast.error("Ops aconteceu algum problema!")
+            navigate("/")
+        })
     }
 
     //Criando um novo usuário
     async function signUp(email, password, nome){
         setLoadingAuth(true);
 
-        createUserWithEmailAndPassword(auth, email, password)
+         await createUserWithEmailAndPassword(auth, email, password)
         .then(async (value) => {
             let uid = value.user.uid
 

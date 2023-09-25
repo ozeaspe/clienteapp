@@ -13,7 +13,7 @@ function SignIn(){
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-   const {signIn} = useContext(AuthContext)
+   const {signIn, loadingAuth} = useContext(AuthContext)
 
    async function handleSignIn(e){
     e.preventDefault();
@@ -52,7 +52,7 @@ function SignIn(){
                     />
                     
                     <button type='submit'>
-                        Acessar
+                        {loadingAuth ? "Carregando..." : "Acessar"}
                     </button>
                     
                 </form>
