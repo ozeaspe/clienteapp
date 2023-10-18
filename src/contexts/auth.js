@@ -1,9 +1,9 @@
-import { useState, createContext,} from "react";
+import { useState, createContext, useEffect} from "react";
 //fazendo a conexão com o firebase
 import{ auth, db } from '../services/firebaseConnection'
 /*Importando do firebase para criar um usuário, importando signInWithEmailAndPassword
-para criar o login do usuário*/
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+para criar o login do usuário, importando signOut para deslogar o usuário*/
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 /*Importando do banco doc==>para acessar os documentos
                       getDoc==> para pegar os documentos
                       setDoc==> para passa os dados para o documento
@@ -26,8 +26,26 @@ function AuthProvider({children}){
     //Criando um spinner, para controlar quando o usuário estiver cadastrando
     const[loadingAuth, setLoadingAuth] = useState(false);
 
+    //Criando um spinner, para controlar o acesso a rota privada
+    const[loading, setLoading] = useState(true);
+
     //Criando a navegação entre paáginas
     const navigate = useNavigate();
+
+    /*Utilizando ciclo de vida para fazer com o que não se perca o login depois que 
+    a página for atualizada*/
+    useEffect(() => {
+        async function loadUser(){
+            const storageUser = localStorage.getItem('@ticketsPRO')
+
+            if(storageUser){
+                setUser(JSON.parse(storageUser))
+                setLoading(false);
+            }
+            setLoading(false);
+        }
+        loadUser();
+    }, [])
 
     //Criando o login do usuário
     async function signIn(email, password){
@@ -97,9 +115,17 @@ function AuthProvider({children}){
         })
     }
 
+    //Método para adicionar os dados do usuário ao localStorage
     function storageUser(data){
         localStorage.setItem('@ticketsPro', JSON.stringify(data))
-    }    
+    } 
+    
+    //Método para deslogar o usuário
+    async function logout(){
+        await signOut(auth);
+        localStorage.removeItem('@ticketsPro');
+        setUser(null);
+    }
 
     return(
         
@@ -110,7 +136,9 @@ function AuthProvider({children}){
             signIn,
             signUp,
             setUser,
-            loadingAuth
+            logout,
+            loadingAuth,
+            loading
             }}
         >
             {children}
