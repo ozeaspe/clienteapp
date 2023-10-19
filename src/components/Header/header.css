@@ -1,0 +1,106 @@
+.sidebar{
+    width: 200px;
+    margin: 0;
+    padding: 0;
+    background-color: #dfd3d6;
+    /*Colocando fixo do lado esquerdo*/
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+/*Colocando a imagem de fundo*/
+.sidebar div{
+    background:url('../../assets/fisioterapia.png');
+    background-color: #dfd3d6;
+    background-position: left;
+    background-repeat: repeat-x;
+    background-size: 100px;
+    height: 100px;
+    width: 200px;
+    padding: 20px;
+}
+
+.sidebar div img{
+    margin-left: 30px;
+    margin-top: -15px;
+    width: 90px;
+    height: 90px;
+    display: block;
+    border-radius: 50%;
+    object-fit: cover;
+    filter: drop-shadow(5px 3px 10px #f5d9d9);
+}
+
+.sidebar a {
+    font-weight: bold;
+    font-size: 18px;
+    display: block;
+    padding: 16px;
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    color: #fff;
+    flex-direction: row;
+    transition: ease-in-out 0.4s;/*para suavizar quando passar o mouse por cima*/
+}
+/*Aplica o estilo em cada item*/
+.sidebar a svg {
+    margin-right: 10px;
+}
+
+.sidebar a:hover{
+    color: #f5b1ef;
+    
+}
+
+.content{
+    margin-left: 200px;
+    padding: 1px 16px;
+}
+
+.icon{
+    color: #fff;
+}
+
+.icon:hover{
+    color:#f5b1ef;
+}
+
+@media screen and (max-width: 700px){
+    .sidebar{
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+  
+    div.content{
+      margin-left: 0;
+    }
+  
+    .sidebar a{
+
+      float: left;
+      display: flex;
+      justify-content: space-between;
+      
+    }
+  
+    .sidebar div{
+       display: none;
+       
+    }
+
+}
+
+@media screen and (max-width: 400px){
+    .sidebar a{
+      text-align: center;
+      float: none;
+    }
+    
+    .sidebar a svg{
+      display: none;
+    }
+  }
+  

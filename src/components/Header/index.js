@@ -2,6 +2,8 @@ import { useContext } from "react"
 import avatarImg from '../../assets/avatar.png'
 import {Link} from 'react-router-dom'
 
+import './header.css';
+
 import { AuthContext } from '../../contexts/auth'
 /*Impotação de biblioteca de ícones, antes de importar é necessário a instalação usando o comando
 npm install react-icons*/
@@ -17,15 +19,15 @@ export default function Header(){
             </div>
 
             <Link to="/dashboard">
-            <FiHome color="#fff" size={24}/>
+            <FiHome size={24} className="icon"/>
             Formulário
             </Link>
             <Link to="/customers">
-            <FiUser color="#fff" size={24}/>
+            <FiUser className="icon" size={24}/>
             Pacientes
             </Link>
             <Link to="/profile">
-            <FiSettings color="#fff" size={24}/>
+            <FiSettings className="icon" size={24}/>
             Perfil
             </Link>
         </div>
