@@ -138,7 +138,8 @@ function AuthProvider({children}){
             setUser,
             logout,
             loadingAuth,
-            loading
+            loading,
+            storageUser,
             }}
         >
             {children}
