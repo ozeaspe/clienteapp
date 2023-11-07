@@ -21,7 +21,6 @@ export default function Customers(){
 
   async function handleRegister(e){
     e.preventDefault();
-
     if(nome !== '' && telefone !== '' && endereco !== '' && datanascimento !== '' && profissao !== '' && emergencia !== ''){
         await addDoc(collection(db, "customers"), {
           nomeFantasia: nome,
@@ -122,7 +121,6 @@ export default function Customers(){
         </div>
        
       </div>
-
     </div>
   )
 }
