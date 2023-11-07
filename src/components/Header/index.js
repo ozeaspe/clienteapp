@@ -7,7 +7,7 @@ import './header.css';
 import { AuthContext } from '../../contexts/auth'
 /*Impotação de biblioteca de ícones, antes de importar é necessário a instalação usando o comando
 npm install react-icons*/
-import {FiHome, FiUser, FiSettings} from 'react-icons/fi'
+import {FiLayers, FiUser, FiSettings} from 'react-icons/fi'
 
 export default function Header(){
     const { user } = useContext(AuthContext);
@@ -19,12 +19,12 @@ export default function Header(){
             </div>
 
             <Link to="/dashboard">
-            <FiHome size={24} className="icon"/>
-            Formulário
+            <FiLayers size={24} className="icon"/>
+            Anamnese
             </Link>
             <Link to="/customers">
             <FiUser className="icon" size={24}/>
-            Pacientes
+            Cadastro
             </Link>
             <Link to="/profile">
             <FiSettings className="icon" size={24}/>
