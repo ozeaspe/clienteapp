@@ -1,61 +1,61 @@
 .container{
-    display: flex;
-    background-color: #dfd3d6;
-    border-radius: 5px;
-    padding: 0.8em;
-    align-items: center;
-    margin-bottom: 1em;
-  }
+  display: flex;
+  background-color: #dfd3d6;
+  border-radius: 5px;
+  padding: 0.8em;
+  align-items: center;
+  margin-bottom: 1em;
+}
 
-  .form-profile-custormers{
-    display: grid;
-    grid-template-columns: 500px 500px 500px;
-    grid-template-rows: 100px;
-  }
-  
- .form-profile-custormers img{
-    margin-bottom: 1em;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-  
- .form-profile-custormers label{
-    margin-bottom: 0.5em;
-    font-size: 1.4em;
-    color: #fff;
-    font-weight: bold;
-  }
-  
- .form-profile-custormers input, textarea, select{
-    margin-bottom: 1em;
-    padding: 0.7em;
-    border:0;
-    border-radius: 5px;
-    max-width: 600px;
-  }
-  
- .form-profile-custormers input:disabled{
-    cursor: not-allowed;
-  }
-  
- .form-profile-custormers button{
-    max-width: 100px;
-  }
-  
- .container-btn2{
-    display: flex;
-    justify-content: center;
-    height: 35px;
-    border:0;
-    background-color: #6c6c6e;
-    color: #fff;
-    font-size: 1.3rem;
-    border-radius: 5px;
-    padding: 0.8em;
-    align-items: center;
-    margin-bottom: 1em;
-  }
+.form-profile-custormers{
+  display: grid;
+  grid-template-columns: 500px 500px 500px;
+  grid-template-rows: 100px;
+}
 
-  .space input{
-    margin-top: 10px;
-  }
+.form-profile-custormers img{
+  margin-bottom: 1em;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.form-profile-custormers label{
+  margin-bottom: 0.5em;
+  font-size: 1.4em;
+  color: #fff;
+  font-weight: bold;
+}
+
+.form-profile-custormers input, textarea, select{
+  margin-bottom: 1em;
+  padding: 0.7em;
+  border:0;
+  border-radius: 5px;
+  max-width: 600px;
+}
+
+.form-profile-custormers input:disabled{
+  cursor: not-allowed;
+}
+
+.form-profile-custormers button{
+  max-width: 100px;
+}
+
+.container-btn2{
+  display: flex;
+  justify-content: center;
+  height: 35px;
+  border:0;
+  background-color: #6c6c6e;
+  color: #fff;
+  font-size: 1.3rem;
+  border-radius: 5px;
+  padding: 0.8em;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+.space input{
+  margin-top: 10px;
+}
