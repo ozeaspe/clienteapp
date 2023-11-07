@@ -24,7 +24,7 @@ export default function Header(){
             </Link>
             <Link to="/customers">
             <FiUser className="icon" size={24}/>
-            Pacientes
+            Cadastro
             </Link>
             <Link to="/profile">
             <FiSettings className="icon" size={24}/>
