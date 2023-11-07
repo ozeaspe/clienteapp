@@ -9,25 +9,36 @@ import { addDoc, collection } from 'firebase/firestore'
 
 import { toast } from 'react-toastify'
 
+import './custormers.css'
+
 export default function Customers(){
   const [nome, setNome] = useState('')
-  const [cpf, setCpf] = useState('')
+  const [telefone, setTelefone] = useState('')
   const [endereco, setEndereco] = useState('')
+  const [datanascimento, setDatanascimento] = useState('')
+  const [profissao, setProfissao] = useState('')
+  const[emergencia, setEmergencia]  = useState('')
 
   async function handleRegister(e){
     e.preventDefault();
 
-    if(nome !== '' && cpf !== '' && endereco !== ''){
+    if(nome !== '' && telefone !== '' && endereco !== '' && datanascimento !== ''){
         await addDoc(collection(db, "customers"), {
           nomeFantasia: nome,
-          cpf: cpf,
-          endereco: endereco
+          telefone: telefone,
+          endereco: endereco,
+          datanascimento: datanascimento,
+          profissao: profissao,
+          emergencia: emergencia
         })
         .then(() => {
           setNome('')
-          setCpf('')
+          setTelefone('')
           setEndereco('')
-          toast.success("Empresa registrada!")
+          setDatanascimento('')
+          setProfissao('')
+          setEmergencia('')
+          toast.success("Paciente Cadastrado!")
         })
         .catch((error) => {
           console.log(error);
@@ -45,42 +56,71 @@ export default function Customers(){
       <Header/>
 
       <div className="content">
-        <Title name="Clientes">
+        <Title name="Cadastro de Pacientes">
           <FiUser size={25} />
         </Title>
 
         <div className="container">
-          <form className="form-profile" onSubmit={handleRegister}>
-              <label>Nome Completo</label>
+          <form className="form-profile-custormers" onSubmit={handleRegister}>
+             <div className="space"> <label>Nome</label><br/>
               <input
                 type="text"
-                placeholder="Nome da empresa"
+                placeholder="Nome Completo"
                 value={nome}
                 onChange={(e) => setNome(e.target.value) }
-              />
+              /></div>
 
-              <label>CPF</label>
+              <div className="space">
+              <label>Telefone</label><br/>
               <input
                 type="text"
-                placeholder="Digite o CPF"
-                value={cpf}
-                onChange={(e) => setCpf(e.target.value) }
-              />
+                placeholder="Digite o Telefone"
+                value={telefone}
+                onChange={(e) => setTelefone(e.target.value) }
+              /></div>
 
-              <label>Endereço</label>
+              <div className="space">
+              <label>Endereço</label><br/>
               <input
                 type="text"
-                placeholder="Endereço da empresa"
+                placeholder="Digite o endereço"
                 value={endereco}
                 onChange={(e) => setEndereco(e.target.value) }
-              />
+              /></div>
 
-              <button type="submit">
-                Salvar
-              </button>
+              <div className="space">
+              <label>Profissão</label><br/>
+              <input
+                type="text"
+                placeholder="Digite a Profissão"
+                value={profissao}
+                onChange={(e) => setProfissao(e.target.value) }
+              /></div>
+
+              <div className="space">
+              <label>Emergência</label><br/>
+              <input
+                type="text"
+                placeholder="Digite o nome e o telefone"
+                value={emergencia}
+                onChange={(e) => setEmergencia(e.target.value) }
+              /></div>
+
+              <div className="space">
+              <label>Data de Nascimento</label><br/>
+              <input
+                type="date"
+                placeholder="Digite a data de nascimento"
+                value={datanascimento}
+                onChange={(e) => setDatanascimento(e.target.value) }
+              /></div>
+
+             <button type="submit" className="container-btn2">Salvar</button>
           </form>
+          
+          
         </div>
-
+       
       </div>
 
     </div>
