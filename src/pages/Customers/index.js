@@ -60,7 +60,7 @@ export default function Customers(){
           <FiUser size={25} />
         </Title>
 
-        <div className="container">
+        <div className="container2">
           <form className="form-profile-custormers" onSubmit={handleRegister}>
              <div className="space"> <label>Nome</label><br/>
               <input
