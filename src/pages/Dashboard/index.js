@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom'
 import './dashboard.css'
 
 export default function Dashboard(){
+
   const { logout } = useContext(AuthContext);
 
   async function handleLogout(){
@@ -28,7 +29,7 @@ export default function Dashboard(){
         <>
           <Link to="/new" className="new">
             <FiPlus color="#FFF" size={25} />
-            Novo chamado
+            Adicionar Paciente
           </Link>  
 
           <table>
