@@ -46,7 +46,7 @@ function AuthProvider({children}){
         }
         loadUser();
     }, [])
-
+    
     //Criando o login do usuário
     async function signIn(email, password){
         setLoadingAuth(true);
