@@ -10,6 +10,7 @@ import { collection, getDocs, orderBy, limit, startAfter, query } from 'firebase
 import { db } from '../../services/firebaseConnection'
 
 import { format } from 'date-fns'
+import Modal from '../../components/Modal'
 
 import './dashboard.css'
 
@@ -22,6 +23,8 @@ export default function Dashboard(){
   const [isEmpty, setIsEmpty] = useState(false)
   const [lastDocs, setLastDocs] = useState()
   const [loadingMore, setLoadingMore] = useState(false);
+  const [showPostModal, setShowPostModal] = useState(false);
+  const [detail, setDetail] = useState();
 
   useEffect(() => {
     async function loadChamados(){
@@ -84,6 +87,11 @@ export default function Dashboard(){
 
   }
 
+  function toggleModal(item){
+    setShowPostModal(!showPostModal)
+    setDetail(item)
+  }
+
   if(loading){
     return(
       <div>
@@ -114,7 +122,7 @@ export default function Dashboard(){
         <>
           {anamnese.length === 0 ? (
             <div className="container dashboard">
-              <span>Nenhum chamado encontrado...</span>
+              <span>Nenhum paciente encontrado...</span>
               <Link to="/new" className="new">
                 <FiPlus color="#FFF" size={25} />
                 
@@ -144,13 +152,13 @@ export default function Dashboard(){
                         <td data-label="Paciente">{item.cliente}</td>
                         <td data-label="Serviço">{item.servico}</td>
                         <td data-label="Status">
-                          <span className="badge" style={{ backgroundColor: item.status === 'Aberto' ? '#5cb85c' : '#999' }}>
+                          <span className="badge" style={{ backgroundColor: item.status === 'Atendimento' ? '#5cb85c' : '#999' }}>
                             {item.status}
                           </span>
                         </td>
                         <td data-label="Cadastrado">{item.createdFormat}</td>
                         <td data-label="#">
-                          <button className="action" style={{ backgroundColor: '#3583f6' }} >
+                          <button className="action" style={{ backgroundColor: '#3583f6' }} onClick={() => toggleModal(item)} >
                             <FiSearch color='#FFF' size={17}/>
                           </button>
                           <Link to={`/new/${item.id}`} className="action" style={{ backgroundColor: '#f6a935' }}>
@@ -163,7 +171,7 @@ export default function Dashboard(){
                 </tbody>
               </table>   
 
-              {loadingMore && <h3>Buscando mais chamados...</h3>}    
+              {loadingMore && <h3>Buscando mais pacientes...</h3>}    
               {!loadingMore && !isEmpty && <button className="btn-more" onClick={handleMore}>Buscar mais</button>  }                
             </>
           )}
@@ -171,6 +179,13 @@ export default function Dashboard(){
 
       </div>
     
+      {showPostModal && (
+        <Modal
+          conteudo={detail}
+          close={ () => setShowPostModal(!showPostModal) }
+        />
+      )}
+
     </div>
   )
 }

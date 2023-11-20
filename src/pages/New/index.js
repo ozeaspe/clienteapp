@@ -225,7 +225,7 @@ export default function New(){
                             onChange={(e) => setComplemento(e.target.value)}
                         />
 
-                        <button type="submit">Register</button>
+                        <button type="submit">Registrar</button>
                     </form>
                 </div>
             </div>
