@@ -2,6 +2,8 @@ import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/auth";
 
+import {toast} from 'react-toastify';
+
 import fisioterapia from '../../assets/fisioterapia.png'
 
 function SignUp(){
@@ -23,6 +25,18 @@ function SignUp(){
     //fazer cadastro
     if(nome !== '' && email !== '' && password !== ''){
         await signUp(email, password, nome)
+    }if(nome === '' && email !== '' && password !== ''){
+        toast.error("Obrigatório preencher o campo em branco!")
+    }if(nome === '' && email === '' && password !== ''){
+        toast.error("Obrigatório preencher os campos em branco!")
+    }if(nome !== '' && email === '' && password === ''){
+        toast.error("Obrigatório preencher os campos em branco!")
+    }if(nome !== '' && email === '' && password !== ''){
+        toast.error("Obrigatório preencher o campo em branco!")
+    }if(nome !== '' && email !== '' && password === ''){
+        toast.error("Obrigatório preencher o campo em branco!")
+    }if(nome === '' && email === '' && password === ''){
+        toast.error("Obrigatório preencher os campos em branco!")
     }
 
    }
@@ -35,7 +49,7 @@ function SignUp(){
                 </div>
 
                 <form onSubmit={handleSubmit}>
-                    <h1>Novo Usuário</h1>
+                    <h1>Nova Conta</h1>
 
                     <input
                     type='text'
@@ -47,7 +61,7 @@ function SignUp(){
                     />
 
                     <input
-                    type='text'
+                    type='email'
                     placeholder='Email'
                     //Usa a useState para capturar o que foi digitado
                     value={email}

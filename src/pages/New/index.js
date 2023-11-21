@@ -28,7 +28,7 @@ export default function New(){
     const [customerSelected, setCustomerSelected] = useState(0)
 
     const [complemento, setComplemento] = useState('')
-    const [servico, setServico] = useState('Pilates')
+    const [servico, setServico] = useState('Acupuntura')
     const [status, setStatus] = useState('Atendido')
     const [idCustomer, setIdCustomer] = useState(false)
 
@@ -161,71 +161,154 @@ export default function New(){
                 </Title>
 
                 <div className="container">
-                    <form className="form-profile" onSubmit={handleRegister}>
+                <form className="form-profile" onSubmit={handleRegister}>
 
-                        <label>Pacientes</label>
-                        {
-                            loadCustomer ? (
-                         <input type="text" disabled={true} value="Carregando..." />
-                             ) : (
-                            <select value={customerSelected} onChange={handleChangeCustomer}>
-                                {customers.map((item, index) => {
-                                  return(
-                                    <option key={index} value={index}>
-                                         {item.nomeFantasia}
-                                    </option>
-                                    )
-                                     })}
-                             </select>
-                             )
-                            }
-
-                        <label>Serviço</label>
-                        <select value={servico} onChange={handleChangeSelect}>
-                            <option value="Pilates">Pilates</option>
-                            <option value="Acupuntura">Acupuntura</option>
-                            <option value="Massagens">Massagens</option>
+                    <label>Pacientes</label>
+                    {
+                        loadCustomer ? (
+                    <input type="text" disabled={true} value="Carregando..." />
+                        ) : (
+                        <select value={customerSelected} onChange={handleChangeCustomer}>
+                            {customers.map((item, index) => {
+                              return(
+                                <option key={index} value={index}>
+                                    {item.nomeFantasia}
+                                </option>
+                                )
+                                })}
                         </select>
+                        )
+                        }
 
-                        <label>Status</label>
-                        <div>
-                        <input
-                            type="radio"
-                            name="radio"
-                            value="Atendimento"
-                            onChange={handleOptionChange}
-                            checked={status === 'Atendimento'}
-                        />
-                        <span>Em atendimento</span>
+                    <label>Queixa Principal</label>
+                    <textarea
+                        type="text"
+                        placeholder="Digite aqui"
+                        value={queixa}
+                        onChange={(e) => setComplemento(e.target.value)}
+                    />
 
-                        <input
-                            type="radio"
-                            name="radio"
-                            value="Atendido"
-                            onChange={handleOptionChange}
-                            checked={status === 'Atendido'}
-                        />
-                        <span>Atendido</span>
+                    <label>Doenças crônicas conjugadas</label>
+                    <textarea
+                        type="text"
+                        placeholder="Digite aqui"
+                        value={doencas}
+                        onChange={(e) => setComplemento(e.target.value)}
+                    />
 
-                        <input
-                            type="radio"
-                            name="radio"
-                            value="Finalizado"
-                            onChange={handleOptionChange}
-                            checked={status === 'Finalizado'}
-                        />
-                        <span>Finalizado</span>
-                        </div>
+                    <label>Antecedentes Familiares</label>
+                    <textarea
+                        type="text"
+                        placeholder="Digite aqui"
+                        value={antfamilia}
+                        onChange={(e) => setComplemento(e.target.value)}
+                    />
 
-                        <label>Complemento</label>
-                        <textarea
-                            type="text"
-                            placeholder="Descreve seu problema (opcional)"
-                            value={complemento}
-                            onChange={(e) => setComplemento(e.target.value)}
-                        />
+                    <label>Lista de Medicamentos que o paciente faz uso</label>
+                    <textarea
+                        type="text"
+                        placeholder="Digite aqui"
+                        value={medicamentos}
+                        onChange={(e) => setComplemento(e.target.value)}
+                    />
 
-                        <button type="submit">Registrar</button>
+                    <label>Costuma ingerir bebidas alcoólicas?</label>
+                    <textarea
+                        type="text"
+                        placeholder="Digite aqui"
+                        value={bebidas}
+                        onChange={(e) => setComplemento(e.target.value)}
+                    />
+
+                    <label>Costuma fumar?</label>
+                    <textarea
+                        type="text"
+                        placeholder="Digite aqui"
+                        value={fuma}
+                        onChange={(e) => setComplemento(e.target.value)}
+                    />
+
+                    <label>Costuma fumar?</label>
+                    <textarea
+                        type="text"
+                        placeholder="Digite aqui"
+                        value={fuma}
+                        onChange={(e) => setComplemento(e.target.value)}
+                    />
+
+                    <label>Sofreu acidente grave?Apresenta alguma sequela?</label>
+                    <textarea
+                        type="text"
+                        placeholder="Digite aqui"
+                        value={acidente}
+                        onChange={(e) => setComplemento(e.target.value)}
+                    />
+
+                    <label>Selecione opção em relação ao estresse durante um dia normal</label>
+                    <select value={qtnestresse} onChange={handleChangeSelect}>
+                        <option value="Sem estresse">Sem estresse</option>
+                        <option value="Estresse leve ocasional">Estresse leve ocasional</option>
+                        <option value="Estresse moderado frequente">Estresse moderado frequente</option>
+                        <option value="Estresse elevado frequente">Estresse elevado frequente</option>
+                        <option value="Estresse elevado constante">Estresse elevado constante</option>
+                    </select>
+
+                    <label>Qual o objetivo em praticar pilates</label>
+                    <select value={objpilates} onChange={handleChangeSelect}>
+                        <option value="Perder peso">Perder peso</option>
+                        <option value="Melhorar a flexibilidade">Melhorar a flexibilidade</option>
+                        <option value="Melhorar a condição muscular">Melhorar a condição muscular</option>
+                        <option value="Reduzir dores">Reduzir dores</option>
+                        <option value="Reduzir o estresse">Reduzir o estresse</option>
+                    </select>
+
+                    <label>Serviço</label>
+                    <select value={servico} onChange={handleChangeSelect}>
+                        <option value="Acupuntura">Acupuntura</option>
+                        <option value="Fisioterapia">Fisioterapia</option>
+                        <option value="Massoterapia">Massoterapia</option>
+                        <option value="Pilates">Pilates</option>
+                    </select>
+
+                    <label>Status</label>
+                    <div>
+                    <input
+                        type="radio"
+                        name="radio"
+                        value="Atendimento"
+                        onChange={handleOptionChange}
+                        checked={status === 'Atendimento'}
+                    />
+                    <span>Em atendimento</span>
+
+                    <input
+                        type="radio"
+                        name="radio"
+                        value="Atendido"
+                        onChange={handleOptionChange}
+                        checked={status === 'Atendido'}
+                    />
+                    <span>Atendido</span>
+
+                    <input
+                        type="radio"
+                        name="radio"
+                        value="Finalizado"
+                        onChange={handleOptionChange}
+                        checked={status === 'Finalizado'}
+                    />
+                    <span>Finalizado</span>
+                    </div>
+
+                    <label>Complemento</label>
+                    <textarea
+                        type="text"
+                        placeholder="Descreve seu problema (opcional)"
+                        value={complemento}
+                        onChange={(e) => setComplemento(e.target.value)}
+                    />
+
+                    <button type="submit">Registrar</button>
                     </form>
                 </div>
             </div>

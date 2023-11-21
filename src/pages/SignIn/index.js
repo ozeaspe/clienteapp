@@ -21,8 +21,14 @@ function SignIn(){
     //Se o email é diferente de vazio, se a senha é diferente de vazio, chama o método de signIn 
     if(email !== '' && password !== ''){
         await signIn(email, password);
-    }else{
-        toast.error("Usuário não cadastrado!")
+        
+    }if(email === '' && password !== ''){
+        toast.error("Digite o email!")
+    }if(password === '' && email !== ''){
+        toast.error("Digite a senha!")
+    }
+    if(email === '' && password === ''){
+        toast.error("É necessário criar uma conta!")
     }
 }
 
@@ -36,8 +42,8 @@ function SignIn(){
                 <form onSubmit={handleSignIn}>
                     <h1>Login</h1>
                     <input
-                    type='text'
-                    placeholder='email@email.com'
+                    type='email'
+                    placeholder='Email'
                     //Usa a useState para capturar o que foi digitado
                     value={email}
                     //Capturar os dados digitados e passar para a useState
