@@ -31,6 +31,15 @@ export default function New(){
     const [servico, setServico] = useState('Acupuntura')
     const [status, setStatus] = useState('Atendido')
     const [idCustomer, setIdCustomer] = useState(false)
+    const [queixa, setQueixa] = useState('')
+    const [doencas, setDoencas] = useState('')
+    const [antfamilia, setAntfamilia] = useState('')
+    const [medicamentos, setMedicamentos] = useState('')
+    const [bebidas, setBebidas] = useState('')
+    const [fuma, setFuma] = useState('')
+    const [acidente, setAcidente] = useState('')
+    const [qtnestresse, setQtnestresse] = useState('')
+    const [objpilates, setObjpilates] = useState('')
 
     useEffect(() => {
         async function loadCustomers(){
@@ -139,6 +148,15 @@ export default function New(){
         complemento: complemento,
         status: status,
         userId: user.uid,
+        queixa: queixa,
+        doencas: doencas,
+        antfamilia: antfamilia,
+        medicamentos: medicamentos,
+        bebidas: bebidas,
+        fuma:fuma,
+        acidente: acidente,
+        qtnestresse: qtnestresse,
+        objpilates: objpilates,
       })
       .then(() => {
         toast.success("Anamnese Concluída!")
@@ -185,7 +203,7 @@ export default function New(){
                         type="text"
                         placeholder="Digite aqui"
                         value={queixa}
-                        onChange={(e) => setComplemento(e.target.value)}
+                        onChange={(e) => setQueixa(e.target.value)}
                     />
 
                     <label>Doenças crônicas conjugadas</label>
@@ -193,7 +211,7 @@ export default function New(){
                         type="text"
                         placeholder="Digite aqui"
                         value={doencas}
-                        onChange={(e) => setComplemento(e.target.value)}
+                        onChange={(e) => setDoencas(e.target.value)}
                     />
 
                     <label>Antecedentes Familiares</label>
@@ -201,7 +219,7 @@ export default function New(){
                         type="text"
                         placeholder="Digite aqui"
                         value={antfamilia}
-                        onChange={(e) => setComplemento(e.target.value)}
+                        onChange={(e) => setAntfamilia(e.target.value)}
                     />
 
                     <label>Lista de Medicamentos que o paciente faz uso</label>
@@ -209,7 +227,7 @@ export default function New(){
                         type="text"
                         placeholder="Digite aqui"
                         value={medicamentos}
-                        onChange={(e) => setComplemento(e.target.value)}
+                        onChange={(e) => setMedicamentos(e.target.value)}
                     />
 
                     <label>Costuma ingerir bebidas alcoólicas?</label>
@@ -217,7 +235,7 @@ export default function New(){
                         type="text"
                         placeholder="Digite aqui"
                         value={bebidas}
-                        onChange={(e) => setComplemento(e.target.value)}
+                        onChange={(e) => setBebidas(e.target.value)}
                     />
 
                     <label>Costuma fumar?</label>
@@ -225,15 +243,7 @@ export default function New(){
                         type="text"
                         placeholder="Digite aqui"
                         value={fuma}
-                        onChange={(e) => setComplemento(e.target.value)}
-                    />
-
-                    <label>Costuma fumar?</label>
-                    <textarea
-                        type="text"
-                        placeholder="Digite aqui"
-                        value={fuma}
-                        onChange={(e) => setComplemento(e.target.value)}
+                        onChange={(e) => setFuma(e.target.value)}
                     />
 
                     <label>Sofreu acidente grave?Apresenta alguma sequela?</label>
@@ -241,7 +251,7 @@ export default function New(){
                         type="text"
                         placeholder="Digite aqui"
                         value={acidente}
-                        onChange={(e) => setComplemento(e.target.value)}
+                        onChange={(e) => setAcidente(e.target.value)}
                     />
 
                     <label>Selecione opção em relação ao estresse durante um dia normal</label>
