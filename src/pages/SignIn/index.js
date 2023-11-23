@@ -43,7 +43,7 @@ function SignIn(){
                     <h1>Login</h1>
                     <input
                     type='email'
-                    placeholder='Email'
+                    placeholder='email@email.com'
                     //Usa a useState para capturar o que foi digitado
                     value={email}
                     //Capturar os dados digitados e passar para a useState
